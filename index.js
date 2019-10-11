@@ -6,12 +6,6 @@ RPC.register(clientId);
 const client = new RPC.Client({
     transport: 'ipc'
 });
-var video = null;
-var artist = null;
-
-function getOccurrence(array, value) {
-    return array.filter((v) => (v === value)).length;
-}
 
 async function updatePresence() {
     let window = activeWin.sync();
@@ -21,11 +15,9 @@ async function updatePresence() {
     		name: window.owner.name,
     		title: window.title
     	}
-    	console.log(window)
-
     	let anime = {
     		name: window.title.match(/Аниме (.*) смотреть онлайн/) ? window.title.match(/Аниме (.*) смотреть онлайн/)[1] : null,
-    		status: 'Просматривается, серия: [?/?]'
+    		status: 'Просматривается, серия: [?/?]' //TODO: вывод серии / по возможности thumbnail
     	}
     	if(anime.name === null) {
     		anime = {
@@ -33,7 +25,6 @@ async function updatePresence() {
     			status: 'Не просматривается, открыто другое окно'
     		}
     	}
-    	console.log(anime)
         updateRP(anime);
     } catch (e) {
         console.log(e);
@@ -45,7 +36,7 @@ function updateRP(anime) {
         details: anime.name,
         state: anime.status,
         largeImageKey: '-1',
-        largeImageText: 'YummyAnime', //todo : make it show thumbnails & maybe a timer
+        largeImageText: 'YummyAnime', //TODO: вывод серии / по возможности thumbnail
         startTimestamp: data,
         instance: false
     }).catch(err => {
@@ -54,7 +45,7 @@ function updateRP(anime) {
 
 }
 client.on('ready', () => {
-    console.log("Connected to Discord!");
+    console.log("Connected!");
     setInterval(() => {
         updatePresence();
     }, 10000);
@@ -63,11 +54,3 @@ client.on('ready', () => {
 client.login({
     clientId
 }).catch(console.error);
-
-var http = require('http');
- 
-http.createServer(function(request, respone){
-  respone.writeHead(200, {'Content-type':'text/plan'});
-  console.log("Hello")
- 
-}).listen(7000);
