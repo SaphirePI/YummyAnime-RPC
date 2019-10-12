@@ -1,6 +1,6 @@
 # YummyAnime-RPC
 
-![preview](https://cdn.discordapp.com/attachments/590297589602320416/632536601070665748/Yummy_Anime_1.png)
+![preview](https://media.discordapp.net/attachments/590297589602320416/632538223859466251/Yummy_Anime_3.png)
 
 Скрипт для отображения названия аниме с сайта https://YummyAnime.club
 
