@@ -9,12 +9,6 @@
 Download by
 
 ```git
-git clone https://git.io/Jel16
-```
-
->Не работает?
-
-```git
 git clone https://github.com/thex49/YummyAnime-RPC.git
 ```
 
